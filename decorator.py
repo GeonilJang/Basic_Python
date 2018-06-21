@@ -1,3 +1,4 @@
+import re
 print("hello world with python")
 
 # def mysum1():
@@ -191,3 +192,27 @@ def sum_d(x,y):
     return x+y
 
 print("3 ,", sum_d(10,20))
+
+
+"""""""""""""""""""""
+리스트에서 '건일'이 있는지 찾고 있으면 hello 출력
++
+'Hello 건일로 변경출력 함수 1가지  방법으로 구현'
+
+"""""""""""""""""""""
+input  = ['geonil','Geonil','신','Shinae','geonilJang']
+
+def countElement(input):
+    if(r'신' in input ):
+        print('I found \'건일\' in the list.')
+        return '건일'
+
+def addText(fn):
+    def wrap(input):
+        return "{}님 만나서 반갑습니다.".format(fn(input))
+    return wrap
+
+
+makedFun = addText(countElement)
+makedText = makedFun(input)
+print(makedText)
