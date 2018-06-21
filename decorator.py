@@ -132,18 +132,62 @@ def mylongtime1(x,y):
     time.sleep(1)
     return x+y+10
 
-
+@myf
 def mylongtime2(x,y):
     time.sleep(1)
     return (x*y)+10
 
 
+"""
+어노테이션 마크를 이용한 장식자를 사용하게 되면 어노테이션
+정의를 한 함수의 이름을 그대로 사용할 수있다.
+음...즉! 기존에 사용하고 있는 함수를
+다른 함수에 덫붙여서 사용하기 위해서 장식자를 사용한다.
+데코를 할 함술을 정의 할때 적당한 위치에 내 가 사용하는  함수를 정의
+하는 것이 중요하다.
+"""
+
+#
+# print(mylongtime1(10,20))
+# print(mylongtime1(10,20))
+# print(mylongtime1(10,20))
+# print(mylongtime2(120,20))
+# print(mylongtime2(120,20))
+# print(mylongtime2(130,20))
+# print(mylongtime2(130,20))
+# print(mylongtime2(130,20))
+# print(mylongtime2(130,20))
+# print(mylongtime2(130,20))
+# print(mylongtime2(130,20))
+# print(mylongtime2(130,20))
 
 
 
-print(mylongtime1(10,20))
-print(mylongtime1(10,20))
-print(mylongtime1(10,20))
-print(mylongtime2(120,20))
-print(mylongtime2(120,20))
-print(mylongtime2(130,20))
+
+
+
+#<--------------------------->
+#기존에 있는 함수
+def sun(x , y):
+    return x+y
+print("1 ," ,sun(10,30))
+
+def decorator(fn):
+    def wrap(x,y):
+        return fn(x,y)*10
+    return wrap
+
+#기존 함수 장식자 이용한 활용
+newfun = decorator(sun)
+val = newfun(20,30)
+print("2 ," ,val)
+#<--------------------------->
+
+
+#위의 방법을 어노테이션으로 사용하는 방법
+#기존의 있는 함수사용이 아닌 decorator를 위한 새로운 함수 정의
+@decorator #-> decorator 함수에 사용할 함수를 구현 하겠다 라는 의미구나!!
+def sum_d(x,y):
+    return x+y
+
+print("3 ,", sum_d(10,20))
