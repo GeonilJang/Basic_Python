@@ -1,13 +1,3 @@
-"""
-1	1S2D*3T	    37	    1^1 * 2 + 2^2 * 2 + 3^3
-2	1D2S#10S	9	    1^2 + 2^1 * (-1) + 10^1
-3	1D2S0T	    3	    1^2 + 2^1 + 0^3
-4	1S*2T*3S	23	    1^1 * 2 * 2 + 2^3 * 2 + 3^1
-5	1D#2S*3S	5	    1^2 * (-1) * 2 + 2^1 * 2 + 3^1
-6	1T2D3D#	    -4	    1^3 + 2^2 + 3^2 * (-1)
-7	1D2S3T*	    59	    1^2 + 2^1 * 2 + 3^3 * 2
-
-"""
 import re
 from testCase import testList
 
@@ -25,10 +15,6 @@ def checkScore(testCase):
     datas = dict()
     games = re.split(r'(\d\d?[S|T|D][*|#]{0,1})(\d\d?[S|T|D][*|#]{0,1})(\d\d?[S|T|D][*|#]{0,1})', testCase)
 
-    print(" ")
-    print("게임 : ",games)
-    print(" ")
-
     for i in range(1, 4):
         ele = re.split(r'(\d\d?)([S|T|D])([*|#]{0,1})', games[i])
         if('S' in ele[2]):
@@ -42,57 +28,22 @@ def checkScore(testCase):
             option = ele[3]
         else:
             print("You got wrong a game option")
-
         datas[i-1]=[score, int(checkOption(option))]
     return datas
 
-
-j=0
-k=0
 result = [1, 1, 1]
 for testCase in testList:
-    out1 = checkScore(testCase)
-    print("{out1} 딕셔너리".format(out1=out1))
+    dicValue = checkScore(testCase)
+    print("{dicValue} 딕셔너리".format(dicValue=dicValue))
     for i in range(3):
-        if(i == 0):
-            if(out1[1][1] == 2 and out1[0][1] == -1):
-                result[i] = out1[0][0] * -2
-            elif(out1[1][1] == 2):
-                result[i] = out1[0][0] * 2
-            elif(out1[0][1] == -1):
-                result[i] = out1[0][0] * -1
-            elif(out1[0][1] == 2 and out1[1][1] == 2):
-                result[i] = out1[0][0] * 4
-        elif(i == 1):
-            if(out1[0][1] == -1 and out1[1][1] == 2):
-                result[i] = out1[1][0] * -2
-            elif(out1[1][1] == 2 and out1[2][1] == 2):
-                result[i] = out1[1][0] * 4
-            elif(out1[])
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        print(result)
+        if(i > 0):
+            if(dicValue[i][1] == 2):
+                result[i-1] = result[i-1]*2
+                result[i] = dicValue[i][0]*2
+            elif(dicValue[i][1] == -1):
+                result[i] = dicValue[i][0]*-1
+            else:
+                result[i] = dicValue[i][0]
+        else:
+            result[i] = dicValue[i][0] * dicValue[i][1]
+    print(sum(result))
