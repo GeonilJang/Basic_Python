@@ -200,10 +200,10 @@ print("3 ,", sum_d(10,20))
 'Hello 건일로 변경출력 함수 1가지  방법으로 구현'
 
 """""""""""""""""""""
-input  = ['geonil','Geonil','신','Shinae','geonilJang']
+input  = ['geonil','123','신애','Shinae','geonilJang']
 
 def countElement(input):
-    if(r'신' in input ):
+    if(r'신애' in input ):
         print('I found \'건일\' in the list.')
         return '건일'
 
