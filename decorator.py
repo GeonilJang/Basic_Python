@@ -213,6 +213,16 @@ def addText(fn):
     return wrap
 
 
+<<<<<<< HEAD:decorator.py
+print(mylongtime1(10,20))
+print(mylongtime1(10,20))
+print(mylongtime1(10,20))
+print(mylongtime2(120,20))
+print(mylongtime2(120,20))
+print(mylongtime2(130,20))
+()
+=======
 makedFun = addText(countElement)
 makedText = makedFun(input)
 print(makedText)
+>>>>>>> 6757c6f507ad15f6a8e180665b037ffb46a5dd97:decorator.py
