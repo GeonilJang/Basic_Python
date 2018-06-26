@@ -50,49 +50,20 @@ def checkScore(testCase):
 j=0
 k=0
 result = [1, 1, 1]
+
 for testCase in testList:
-    out1 = checkScore(testCase)
-    print("{out1} 딕셔너리".format(out1=out1))
+    dicValue = checkScore(testCase)
+    # print("{dicValue} 딕셔너리".format(dicValue=dicValue))
     for i in range(3):
-        if(i == 0):
-            if(out1[1][1] == 2 and out1[0][1] == -1):
-                result[i] = out1[0][0] * -2
-            elif(out1[1][1] == 2):
-                result[i] = out1[0][0] * 2
-            elif(out1[0][1] == -1):
-                result[i] = out1[0][0] * -1
-            elif(out1[0][1] == 2 and out1[1][1] == 2):
-                result[i] = out1[0][0] * 4
-        elif(i == 1):
-            if(out1[0][1] == -1 and out1[1][1] == 2):
-                result[i] = out1[1][0] * -2
-            elif(out1[1][1] == 2 and out1[2][1] == 2):
-                result[i] = out1[1][0] * 4
-            elif(out1[])
+        if(i > 0):
+            if(dicValue[i][1] == -1):
+                result[i] = dicValue[i][0]*(-1)
+            elif(dicValue[i][1] == 2):
+                result[i] = dicValue[i][0]*2
+                result[i-1] = result[i-1]*2
+            else:
+                result[i] = dicValue[i][0]*dicValue[i][1]
+        else:
+            result[i] = dicValue[i][0]*dicValue[i][1]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        print(result)
+    print(sum(result))
