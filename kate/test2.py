@@ -32,8 +32,24 @@ def checkScore(testCase):
     return datas
 
 result = [1, 1, 1]
+
 for testCase in testList:
     dicValue = checkScore(testCase)
+<<<<<<< HEAD
+    # print("{dicValue} 딕셔너리".format(dicValue=dicValue))
+    for i in range(3):
+        if(i > 0):
+            if(dicValue[i][1] == -1):
+                result[i] = dicValue[i][0]*(-1)
+            elif(dicValue[i][1] == 2):
+                result[i] = dicValue[i][0]*2
+                result[i-1] = result[i-1]*2
+            else:
+                result[i] = dicValue[i][0]*dicValue[i][1]
+        else:
+            result[i] = dicValue[i][0]*dicValue[i][1]
+
+=======
     print("{dicValue} 딕셔너리".format(dicValue=dicValue))
     for i in range(3):
         if(i > 0):
@@ -46,4 +62,5 @@ for testCase in testList:
                 result[i] = dicValue[i][0]
         else:
             result[i] = dicValue[i][0] * dicValue[i][1]
+>>>>>>> 92a47b40bd8356848cc55718fcd9c51f20d4b429
     print(sum(result))
